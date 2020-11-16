@@ -14,9 +14,7 @@ class LyricChordChart:
         self._lines = data.splitlines()
         self._data = data
 
-    def transpose(
-        self, interval: int, to: str = "flat"
-    ):
+    def transpose(self, interval: int, to: str = "flat"):
         lines = []
         for line in self._lines:
             if self._is_chord_line(line):
@@ -28,16 +26,16 @@ class LyricChordChart:
                 ]
                 line = " ".join(str(chord) for chord in chords)
 
-                logger.info(f'MODIFIED: {line}')
+                logger.info(f"MODIFIED: {line}")
             else:
-                logger.info(f'IGNORED: {line}')
+                logger.info(f"IGNORED: {line}")
             lines.append(line)
         self._data = "\n".join(lines)
 
-    @staticmethod
-    def _is_chord_line(line: str) -> bool:
+    def _is_chord_line(self, line: str) -> bool:
         return line.strip() and all(
-            Chord.is_chord(part) or part in NOTATION for part in line.split()
+            Chord.is_chord(part) or part in NOTATION
+            for part in line.split()
         )
 
     def save(self, filename: str):

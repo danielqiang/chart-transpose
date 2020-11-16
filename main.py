@@ -2,9 +2,9 @@ from chart_transpose import LyricChordChart
 
 
 def main():
-    chart = LyricChordChart('chart.txt')
+    chart = LyricChordChart('examples/chart.txt')
     chart.transpose(-1)
-    chart.save('transposed.txt')
+    chart.save('examples/transposed.txt')
 
 
 if __name__ == '__main__':
